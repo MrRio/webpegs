@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>webpegs</title>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	webpegs.start();
+});
+
+
+var webpegs = function() {
+	
+	var width, height, x;
+	
+	var init = function() {
+		width = 300;
+		height = 300;
+	}
+	
+	var clear = function() {
+		
+	}
+	
+	var draw = function() {
+		//console.log('draw');
+		var ctx = $('#canvas')[0].getContext("2d");
+		ctx.beginPath();
+		ctx.arc(x ++, x * Math.PI * 2, 4, 0, Math.PI*2, true);
+		ctx.closePath();
+		ctx.fill();		
+	}
+	
+	return {
+		start: function() {
+			x = 1;
+			setInterval(draw, 10);
+			
+			
+		}
+	}
+}();
+
+</script>
+<style>
+#canvas {
+	border: 3px solid #000;
+}
+</style>
+ </head>
+ <body>
+   <canvas id="canvas" width="300" height="300"></canvas>
+ </body>
+</html>
